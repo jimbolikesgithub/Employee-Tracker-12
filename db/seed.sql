@@ -28,14 +28,15 @@ VALUES ('Sales Lead', 100000, 1),
 -- Each manager_id (that isn't NULL) links to an employee's id... --
 -- ...ex. Luke Skywalker is the manager of Arthur Morgan --
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Arthur', 'Morgan', 1, 6),
-       ('Kratos', 'God of War', 2, NULL),
-       ('Satoru', 'Gojo', 3, 4),
-       ('Son', 'Goku', 4, 7),
-       ('Jimbo', 'Edwards', 5, 8),
-       ('Luke', 'Skywalker', 6, NULL),
+VALUES ('Arthur', 'Morgan', 1, NULL),
+       ('Kratos', 'God of War', 2, 1),
+       ('Satoru', 'Gojo', 3, NULL),
+       ('Son', 'Goku', 4, 3),
+       ('Jimbo', 'Edwards', 5, NULL),
+       ('Luke', 'Skywalker', 6, 5),
        ('Maki', 'Zenin', 7, NULL),
-       ('Big', 'Mom', 8, NULL);
+       ('Big', 'Mom', 8, 7);
 
+-- ^^ WORKS (EXCEPT FOR manager_id) ^^ --
 
 -- note: My work was based off of the assets folder images (changed names to fit my own agenda) --

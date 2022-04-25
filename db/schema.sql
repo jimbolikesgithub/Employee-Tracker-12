@@ -37,7 +37,8 @@ CREATE TABLE role (
 
 -- EMPLOYEE TABLE --
 CREATE TABLE employee (
-  id INT NOT NULL AUTO_INCREMENT,
+-- REMOVE NOT NULL (id must be NULLABLE for manager_id)
+  id INT AUTO_INCREMENT,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INT NOT NULL,
@@ -59,6 +60,7 @@ CREATE TABLE employee (
 
 -- ^^ WORKS ^^ -- 
 
--- SOURCE FOR AUTO INCREMENT: https://stackoverflow.com/questions/14628269/error-code-1062-duplicate-entry-1-for-key-primary
+-- SOURCE FOR AUTO INCREMENT (FIXED): https://stackoverflow.com/questions/14628269/error-code-1062-duplicate-entry-1-for-key-primary
 -- note: Was having issues with implementing the IDs into 'seed.sql', and found this gem ^
--- SOURCE FOR ON DELETE CASCADE: https://www.ibm.com/docs/en/informix-servers/14.10?topic=clause-using-delete-cascade-option
+-- SOURCE FOR ON DELETE CASCADE (FIXED): https://www.ibm.com/docs/en/informix-servers/14.10?topic=clause-using-delete-cascade-option
+-- SOURCE FOR ERROR 1452 (NOT FIXED): https://stackoverflow.com/questions/14063652/integrity-constraint-violation-1452-cannot-add-or-update-a-child-row
