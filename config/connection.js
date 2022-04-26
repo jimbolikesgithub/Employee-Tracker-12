@@ -17,6 +17,7 @@ const db = mysql.createConnection(
     console.log('Connected to the tracker_db database.') 
 );
 
+// Connect it once (require connection)
 module.exports = db;
 
 // note: 'config/connection.js' Inspired by 13-ORM/01-Activities/04-Stu-Models & 12-SQL/01-Activities/28-Stu_Mini-Project

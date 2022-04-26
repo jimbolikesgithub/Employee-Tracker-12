@@ -47,8 +47,9 @@ const employeePrompt = () => {
                     // Call 'Add An Employee' Function
                     addEmployee();
                     break;
-                case 'Update An Employee': 
+                case 'Update An Employee Role': 
                     // Call 'Update An Employee' Function
+                    updateEmployeeRole();
                     break;
             }
         })
@@ -60,9 +61,9 @@ const employeePrompt = () => {
         // Show Department Table HERE
         connection.connect(function(err) {
             if (err) throw err;
-            connection.query("SELECT * FROM department", function (err, result, fields) {
+            connection.query("SELECT * FROM department", function (err, result) {
               if (err) throw err;
-              console.log(result);
+              console.table(result);
             });
           });
     }
@@ -73,9 +74,10 @@ const employeePrompt = () => {
         // Show All Roles HERE
         connection.connect(function(err) {
             if (err) throw err;
-            connection.query("SELECT * FROM role", function (err, result, fields) {
+            connection.query("SELECT * FROM role", function (err, result) {
               if (err) throw err;
-              console.log(result);
+            //   console.table instead of log (built in)
+              console.table(result);
             });
           });
     }
@@ -86,9 +88,9 @@ const employeePrompt = () => {
         // Show All Employees HERE
         connection.connect(function(err) {
             if (err) throw err;
-            connection.query("SELECT * FROM employee", function (err, result, fields) {
+            connection.query("SELECT * FROM employee", function (err, result) {
               if (err) throw err;
-              console.log(result);
+              console.table(result);
             });
           });
     }
@@ -104,8 +106,22 @@ const employeePrompt = () => {
                     message: 'What department would you like to add?'
                 }
             ])
+            .then(function(answer) {
+                var query = connection.query(
+                    // ? gets REPLACED 
+                    "INSERT INTO department SET ?",
+                    // THE INPUT
+                    {
+                        name: answer.addDepartment
+                    },
+                    function(err, res) {
+                        console.log(res.affectedRows + " department added!\n");
+                    }
+                )
+                console.log(query.sql);
+            })
     }
-    // ^ HALF DONE, CURRENTLY WORKS ^
+    // ^ WORKS ^
     
 
     // ADD NEW ROLE to role TABLE
@@ -128,8 +144,22 @@ const employeePrompt = () => {
                     message: 'What role is this department for?'
                 }
             ])
+            .then(function(answer) {
+                var query = connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleName,
+                        salary: answer.roleSalary,
+                        department_id: answer.roleDepartment
+                    },
+                    function(err, res) {
+                        console.log(res.affectedRows + " department added!\n");
+                    }
+                )
+                console.log(query.sql);
+            })
     }
-    // ^ HALF DONE, CURRENTLY WORKS ^
+    // ^  WORKS ^
 
     // ADD NEW EMPLOYEE to employee TABLE
     const addEmployee = () => {
@@ -146,22 +176,46 @@ const employeePrompt = () => {
                     message: 'Last name?'
                 },
                 {
-                    type: 'input',
+                    type: 'list',
                     name: 'employeeRole',
+                    choices: ['1', '2', '3', '4', '5', '6', '7'],
                     message: 'Your role?'
                 },
                 {
-                    type: 'input',
+                    type: 'list',
                     name: 'employeeManager',
+                    choices: ['1', '2', '3', '4', '5', '6', '7'],
                     message: 'Whose your manager?'
                 }
             ])
+            .then(function(answer) {
+                var query = connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: answer.employeeRole,
+                        manager_id: answer.employeeManager
+                    },
+                    function(err, res) {
+                        console.log(res.affectedRows + " department added!\n");
+                    }
+                )
+                console.log(query.sql);
+            })
     }
     // ^ HALF DONE, CURRENTLY WORKS ^
 
     // UPDATE EMPLOYEE ROLE; updating employee table
     const updateEmployeeRole = () => {
-
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'First name?'
+                },
+            ])
     }
 
 menuPrompt();
@@ -172,5 +226,18 @@ employeePrompt();
 
 // SOURCES FOR .then() method function arguments: https://stackoverflow.com/questions/32384081/calling-a-async-function-inside-then ...
 // ... AND https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-// note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^
-// SOURCE FOR 
+// note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^ 
+
+// function updateProduct() {
+//     console.log("Updating role...\n")
+//     var query = connection.query(
+//         "UPDATE employee SET ? WHERE ?",
+//         [
+//             {
+                
+//             }
+//         ],
+//     )
+//     console.log(query.sql);
+// }
+// updateProduct();

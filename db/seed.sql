@@ -27,7 +27,7 @@ VALUES ('Sales Lead', 100000, 1),
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('Arthur', 'Morgan', 1, NULL),
     ('Kratos', 'God of War', 2, 1),
-    ('Satoru', 'Gojo', 3, NULL),
+    ('Satoru', 'Gojo', 3, NULL), 
     ('Son', 'Goku', 4, 3),
     ('Jimbo', 'Edwards', 5, NULL),
     ('Luke', 'Skywalker', 6, 5),
