@@ -6,6 +6,8 @@ const inquirer = require('inquirer');
 // Be sure to use 'connection.db'
 const connection = require('./config/connection');
 
+// connection.db.query('')
+
 // note: Took inspiration from my 'Profile-Generator-10' Project
 const employeePrompt = () => {
 
@@ -15,7 +17,7 @@ const employeePrompt = () => {
             {
                 type: 'list',
                 name: 'menu',
-                choices: ['View All Departments', 'View All Roles', 'View All Emplotees', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update An Employee Role'],
+                choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update An Employee Role'],
                 message: 'Welcome to Employee Tracker Inc!'
             }
         ])
@@ -23,12 +25,15 @@ const employeePrompt = () => {
             switch(choices.menu) {
                 case 'View All Departments': 
                     // Call 'View All Departments' Function
+                    viewAllDepartments();
                     break;
                 case 'View All Roles': 
                     // Call 'View All Roles' Function
+                    viewAllRoles();
                     break;
                 case 'View All Employees': 
                     // Call 'View All Employees' Function
+                    viewAllEmployees();
                     break;
                 case 'Add A Department': 
                     // Call 'Add A Department' Function
@@ -53,17 +58,41 @@ const employeePrompt = () => {
     // SHOW department TABLE
     const viewAllDepartments = () => {
         // Show Department Table HERE
+        connection.connect(function(err) {
+            if (err) throw err;
+            connection.query("SELECT * FROM department", function (err, result, fields) {
+              if (err) throw err;
+              console.log(result);
+            });
+          });
     }
+    // ^ WORKS ^
 
     // SHOW role TABLE
     const viewAllRoles = () => {
         // Show All Roles HERE
+        connection.connect(function(err) {
+            if (err) throw err;
+            connection.query("SELECT * FROM role", function (err, result, fields) {
+              if (err) throw err;
+              console.log(result);
+            });
+          });
     }
+    // ^ WORKS ^
 
     // SHOW employee TABLE
     const viewAllEmployees = () => {
         // Show All Employees HERE
+        connection.connect(function(err) {
+            if (err) throw err;
+            connection.query("SELECT * FROM employee", function (err, result, fields) {
+              if (err) throw err;
+              console.log(result);
+            });
+          });
     }
+    // ^ WORKS ^
 
     // ADD NEW DEPARTMENT to department TABLE
     const addDepartment = () => {
@@ -144,3 +173,4 @@ employeePrompt();
 // SOURCES FOR .then() method function arguments: https://stackoverflow.com/questions/32384081/calling-a-async-function-inside-then ...
 // ... AND https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 // note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^
+// SOURCE FOR 
