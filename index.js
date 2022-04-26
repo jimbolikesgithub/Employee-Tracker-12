@@ -178,13 +178,13 @@ const employeePrompt = () => {
                 {
                     type: 'list',
                     name: 'employeeRole',
-                    choices: ['1', '2', '3', '4', '5', '6', '7'],
+                    choices: ['1', '2', '3', '4', '5', '6', '7'], // <---- CHANGE TO ACCESS ALL CURRENT ROLES HERE
                     message: 'Your role?'
                 },
                 {
                     type: 'list',
                     name: 'employeeManager',
-                    choices: ['1', '2', '3', '4', '5', '6', '7'],
+                    choices: ['1', '2', '3', '4', '5', '6', '7'], // <---- CHANGE TO ACCESS ALL CURRENT ROLES HERE
                     message: 'Whose your manager?'
                 }
             ])
