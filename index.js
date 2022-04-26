@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 // const PORT = process.env.PORT || 3001;
 // const app = express();
 // Be sure to use 'connection.db'
-// const connection = require('./config/connection');
+const connection = require('./config/connection');
 
 // note: Took inspiration from my 'Profile-Generator-10' Project
 const employeePrompt = () => {
@@ -32,12 +32,15 @@ const employeePrompt = () => {
                     break;
                 case 'Add A Department': 
                     // Call 'Add A Department' Function
+                    addDepartment();
                     break;
                 case 'Add A Role': 
                     // Call 'Add A Role' Function
+                    addRole();
                     break;
                 case 'Add An Employee': 
                     // Call 'Add An Employee' Function
+                    addEmployee();
                     break;
                 case 'Update An Employee': 
                     // Call 'Update An Employee' Function
@@ -45,7 +48,8 @@ const employeePrompt = () => {
             }
         })
     };
-    
+    // ^ WORKS ^
+
     // SHOW department TABLE
     const viewAllDepartments = () => {
         // Show Department Table HERE
@@ -58,15 +62,78 @@ const employeePrompt = () => {
 
     // SHOW employee TABLE
     const viewAllEmployees = () => {
-
+        // Show All Employees HERE
     }
 
     // ADD NEW DEPARTMENT to department TABLE
     const addDepartment = () => {
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'addDepartment',
+                    message: 'What department would you like to add?'
+                }
+            ])
+    }
+    // ^ WORKS ^
+    
+
+    // ADD NEW ROLE to role TABLE
+    const addRole = () => {
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'roleName',
+                    message: 'What role would you like to make?'
+                },
+                {
+                    type: 'input',
+                    name: 'roleSalary',
+                    message: 'What salary will this role have?'
+                },
+                {
+                    type: 'input',
+                    name: 'roleDepartment',
+                    message: 'What role is this department for?'
+                }
+            ])
+    }
+    // ^ WORKS ^
+
+    // ADD NEW EMPLOYEE to employee TABLE
+    const addEmployee = () => {
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'First name?'
+                },
+                {
+                    type: 'input',
+                    name: 'lastName',
+                    message: 'Last name?'
+                },
+                {
+                    type: 'input',
+                    name: 'employeeRole',
+                    message: 'Your role?'
+                },
+                {
+                    type: 'input',
+                    name: 'employeeManager',
+                    message: 'Whose your manager?'
+                }
+            ])
+    }
+    // ^ WORKS ^
+
+    // UPDATE EMPLOYEE ROLE; updating employee table
+    const updateEmployeeRole = () => {
 
     }
-    
-    
 
 menuPrompt();
 }
