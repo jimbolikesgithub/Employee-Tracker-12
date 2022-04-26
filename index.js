@@ -105,7 +105,7 @@ const employeePrompt = () => {
                 }
             ])
     }
-    // ^ WORKS ^
+    // ^ HALF DONE, CURRENTLY WORKS ^
     
 
     // ADD NEW ROLE to role TABLE
@@ -129,7 +129,7 @@ const employeePrompt = () => {
                 }
             ])
     }
-    // ^ WORKS ^
+    // ^ HALF DONE, CURRENTLY WORKS ^
 
     // ADD NEW EMPLOYEE to employee TABLE
     const addEmployee = () => {
@@ -157,7 +157,7 @@ const employeePrompt = () => {
                 }
             ])
     }
-    // ^ WORKS ^
+    // ^ HALF DONE, CURRENTLY WORKS ^
 
     // UPDATE EMPLOYEE ROLE; updating employee table
     const updateEmployeeRole = () => {
