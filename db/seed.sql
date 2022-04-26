@@ -20,7 +20,6 @@ VALUES ('Sales Lead', 100000, 1),
     ('Accountant', 125000, 3),
     ('Legal Team Lead', 250000, 4),
     ('Lawyer', 190000, 4);
--- ^^ WORKS ^^ --
 
 -- REMOVE IDs thanks to AUTO_INCREMENT --
 -- Each manager_id (that isn't NULL) links to an employee's id... --
@@ -34,6 +33,7 @@ VALUES ('Arthur', 'Morgan', 1, NULL),
     ('Luke', 'Skywalker', 6, 5),
     ('Maki', 'Zenin', 7, NULL),
     ('Big', 'Mom', 8, 7);
--- ^^ WORKS (EXCEPT FOR manager_id) ^^ --
+
+-- ^^ WORKS ^^ --
 
 -- note: My work was based off of the assets folder images (changed names to fit my own agenda) --
