@@ -1,9 +1,5 @@
 const inquirer = require('inquirer');
 
-// Move PORT to another file
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-// Be sure to use 'connection.db'
 const connection = require('./config/connection');
 
 // connection.db.query('')
@@ -63,6 +59,7 @@ const employeePrompt = () => {
             if (err) throw err;
             connection.query("SELECT * FROM department", function (err, result) {
               if (err) throw err;
+              //   console.table instead of log (built in)
               console.table(result);
             });
           });
@@ -90,6 +87,7 @@ const employeePrompt = () => {
             if (err) throw err;
             connection.query("SELECT * FROM employee", function (err, result) {
               if (err) throw err;
+              //   console.table instead of log (built in)
               console.table(result);
             });
           });
@@ -114,7 +112,9 @@ const employeePrompt = () => {
                     {
                         name: answer.addDepartment
                     },
+                    // A function to, if works...
                     function(err, res) {
+                        // ...prinnt the affected rows to the terminal
                         console.log(res.affectedRows + " department added!\n");
                     }
                 )
@@ -178,13 +178,13 @@ const employeePrompt = () => {
                 {
                     type: 'list',
                     name: 'employeeRole',
-                    choices: ['1', '2', '3', '4', '5', '6', '7'], // <---- CHANGE TO ACCESS ALL CURRENT ROLES HERE
+                    choices: ['1', '2', '3', '4', '5', '6', '7'],
                     message: 'Your role?'
                 },
                 {
                     type: 'list',
                     name: 'employeeManager',
-                    choices: ['1', '2', '3', '4', '5', '6', '7'], // <---- CHANGE TO ACCESS ALL CURRENT ROLES HERE
+                    choices: ['1', '2', '3', '4', '5', '6', '7'],
                     message: 'Whose your manager?'
                 }
             ])
@@ -227,6 +227,7 @@ employeePrompt();
 // SOURCES FOR .then() method function arguments: https://stackoverflow.com/questions/32384081/calling-a-async-function-inside-then ...
 // ... AND https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 // note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^ 
+
 
 // function updateProduct() {
 //     console.log("Updating role...\n")
