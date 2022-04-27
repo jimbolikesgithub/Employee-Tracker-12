@@ -52,8 +52,8 @@ package.json -
 ----------
 * Package.json includes 'console.table', 'inquirer', and 'mysql2'
 
-https://github.com/jimbolikesgithub/Employee-Tracker-12
-![Video](https://drive.google.com/file/d/1qQpnP99zTlndov7kCSWGmv4WBpbAxbTj/view?usp=sharing)
+https://github.com/jimbolikesgithub/Employee-Tracker-12<br/>
+![Video](https://drive.google.com/file/d/1qQpnP99zTlndov7kCSWGmv4WBpbAxbTj/view?usp=sharing)<br/>
 ![Employee-Tracker-Screenshot](https://user-images.githubusercontent.com/97565085/165435724-3d46e35a-1e88-47b6-b7a5-226295190eec.png)
 
 
