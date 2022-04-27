@@ -2,8 +2,6 @@ const inquirer = require('inquirer');
 
 const connection = require('./config/connection');
 
-// connection.db.query('')
-
 // note: Took inspiration from my 'Profile-Generator-10' Project
 const employeePrompt = () => {
 
@@ -123,7 +121,6 @@ const employeePrompt = () => {
     }
     // ^ WORKS ^
     
-
     // ADD NEW ROLE to role TABLE
     const addRole = () => {
         inquirer
@@ -207,16 +204,30 @@ const employeePrompt = () => {
     // ^ HALF DONE, CURRENTLY WORKS ^
 
     // UPDATE EMPLOYEE ROLE; updating employee table
-    const updateEmployeeRole = () => {
-        inquirer
+    const updateEmployeeRole = () => {                                    //PROBLEM IS HERE
+        function updateRole() {
+            console.log("Updating role...\n")
+            var query = connection.query(
+                "UPDATE employee SET ? WHERE ?",
+                [
+                    {
+                        
+                    }
+                ],
+            )
+
             .prompt([
                 {
-                    type: 'input',
-                    name: 'firstName',
-                    message: 'First name?'
-                },
+                    type: 'list',
+                    name: 'employeeNames'
+                    choices: ,
+                    message: 'Which employee would you like to update?'
+                }
             ])
-    }
+            console.log(query.sql);
+        }
+        updateRole();    
+    }                                                                    //PROBLEM IS HERE
 
 menuPrompt();
 }
@@ -227,9 +238,9 @@ employeePrompt();
 // SOURCES FOR .then() method function arguments: https://stackoverflow.com/questions/32384081/calling-a-async-function-inside-then ...
 // ... AND https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 // note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^ 
+// SOURCE FOR lines 105 - 119, 144 - 156, and part of 'updateEmployeeRole' on line 207: My Tutor (4/26/2022 --> 5:00pm - 5:50pm)
 
-
-// function updateProduct() {
+// function updateRole() {
 //     console.log("Updating role...\n")
 //     var query = connection.query(
 //         "UPDATE employee SET ? WHERE ?",
@@ -241,4 +252,4 @@ employeePrompt();
 //     )
 //     console.log(query.sql);
 // }
-// updateProduct();
+// updateRole();    

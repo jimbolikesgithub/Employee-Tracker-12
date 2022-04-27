@@ -15,14 +15,16 @@
 5. Create a 'config/connection.js'
     * Import & require 'mysql2'
     * Connect to database
-<!--  -->
+<!-- DONE -->
 6. Create Prompts
     * Add a 'Menu' Prompt
     * Add a 'Department' Prompt
     * Add a 'Role' Prompt
     * Add an 'Employee' Prompt
-    * Add an 'Update An Employee Role' Prompt
+    * Add an 'Update An Employee Role' Prompt <--- LAST ONE... MAKE IT WORK
+<!-- DONE -->
 7. Create functions for showing the following TABLES:
     * View All Departments
     * View All Roles
     * View All Employees
+DONE
