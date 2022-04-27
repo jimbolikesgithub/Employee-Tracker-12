@@ -21,7 +21,8 @@
     * Add a 'Department' Prompt
     * Add a 'Role' Prompt
     * Add an 'Employee' Prompt
-    * Add an 'Update An Employee Role' Prompt <--- LAST ONE... MAKE IT WORK
+    <!-- DOES NOT WORK -->
+    * Add an 'Update An Employee Role' Prompt
 <!-- DONE -->
 7. Create functions for showing the following TABLES:
     * View All Departments

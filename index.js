@@ -201,33 +201,56 @@ const employeePrompt = () => {
                 console.log(query.sql);
             })
     }
-    // ^ HALF DONE, CURRENTLY WORKS ^
+    // ^ WORKS ^
 
     // UPDATE EMPLOYEE ROLE; updating employee table
-    const updateEmployeeRole = () => {                                    //PROBLEM IS HERE
-        function updateRole() {
-            console.log("Updating role...\n")
-            var query = connection.query(
-                "UPDATE employee SET ? WHERE ?",
-                [
-                    {
-                        
-                    }
-                ],
-            )
+    // const updateEmployeeRole = () => {         
+    // function updateRole() {
+    //     console.log("Updating role...\n")
+    //     var query = connection.query(
+    //         "UPDATE employee SET ? WHERE ?",
+    //         [
+    //             {
+                    
+    //             },
+    //             {
 
-            .prompt([
-                {
-                    type: 'list',
-                    name: 'employeeNames'
-                    choices: ,
-                    message: 'Which employee would you like to update?'
-                }
-            ])
-            console.log(query.sql);
-        }
-        updateRole();    
-    }                                                                    //PROBLEM IS HERE
+    //             }
+    //         ],
+    //         function(err, res) {
+    //             console.log(res.affectedRows + " role updated!\n");
+    //             // deleteProduct();
+    //         }
+    //     )
+    //     console.log(query.sql);
+    // }                        
+    //     inquirer
+    //         .prompt([
+    //             {
+    //                 type: 'input',
+    //                 name: 'firstName',
+    //                 message: 'First name?'
+    //             },
+    //             {
+    //                 type: 'input',
+    //                 name: 'lastName',
+    //                 message: 'Last name?'
+    //             },
+    //             {
+    //                 type: 'list',
+    //                 name: 'employeeRole',
+    //                 choices: ['1', '2', '3', '4', '5', '6', '7'],
+    //                 message: 'Your role?'
+    //             },
+    //             {
+    //                 type: 'list',
+    //                 name: 'employeeManager',
+    //                 choices: ['1', '2', '3', '4', '5', '6', '7'],
+    //                 message: 'Whose your manager?'
+    //             }
+    //         ])
+    //     updateRole();    
+    // }                                                                 
 
 menuPrompt();
 }
@@ -239,17 +262,3 @@ employeePrompt();
 // ... AND https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 // note: Didn't know how to put a function inside of a .then() to return a promise (w/ ES6 Functions), so I Google'd it and found these ^ 
 // SOURCE FOR lines 105 - 119, 144 - 156, and part of 'updateEmployeeRole' on line 207: My Tutor (4/26/2022 --> 5:00pm - 5:50pm)
-
-// function updateRole() {
-//     console.log("Updating role...\n")
-//     var query = connection.query(
-//         "UPDATE employee SET ? WHERE ?",
-//         [
-//             {
-                
-//             }
-//         ],
-//     )
-//     console.log(query.sql);
-// }
-// updateRole();    
